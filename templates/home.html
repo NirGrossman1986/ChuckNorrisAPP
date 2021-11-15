@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris Jokes For Fun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="static/css/styles.min.css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+            <div class="container"><a class="navbar-brand" href="{{url_for('login')}}" style="color:#b6d781;">Chuck Norris Jokes For Fun</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1"></div>
+    </div>
+    </nav>
+    </div>
+    <div class="photo-gallery">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Welcome {{name}} &nbsp;</h2>
+                <p class="text-center">This is your homepage</p>
+            </div>
+            <div class="row photos">
+                 
+            </div>
+        </div>
+    </div>
+    
+    
+    <style>
+    .listbox-area {
+    	width: 200px;
+    	height: 150px;
+    	overflow-y: auto;
+    }
+    
+    .listbox-area a {
+    	background-color: #eee;
+    	color: black;
+    	display: block;
+    	padding: 12px;
+    	text-decoration: none;    
+    } 
+    
+    .listbox-area a:hover {
+    	background-color: #ccc;
+    }
+    
+    .listbox-area a.active {
+    	background-color:#4CAF50;
+    	color: white;
+    }
+   	
+    
+    
+    
+    </style> 
+   
+      <p>Choose your favorite Chuck Norris jokes category.</p>
+    
+     
+      <form action="/home" target="frame" method="POST">
+      <select name="x" method="GET" action="/">
+      	
+      	{% for x in alljokecat %}
+        	<option value="{{x}}" >{{x}}</option>
+    		
+    	{% endfor %}
+      	
+      </select>
+      
+      
+	<button type="submit">Submit</button>	      
+      </form>
+      
+      {% if result %}
+		<p id="text">{{result}}</p>
+      {% endif %}
+
+      
+      <p>free search:</p>
+      <form method="post" action='/search'>
+          <p><input name="x" /></p>
+          <p><input type="submit" value="Search" /></p>
+      </form>
+
+      
+	{% for item in search1 %}
+		<p id="text">{{item}}</p>
+	{% endfor %}
+      	
+      
+      <form action="/random" target="frame" method="POST">
+            <p>Random Joke</p>	    
+	    <button type="submit">Submit</button>
+      </form>
+      {% if processed_text %}
+      	<p id="text">{{ processed_text }}</p>
+      {% endif %}
+
+
+
+
